@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Subsystem;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotMap;
-import frc.util.talon.CTREFactory;
+import frc.util.drivers.TalonSRXFactory;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.Set;
@@ -52,7 +52,7 @@ public class ExampleElevator extends SubsystemBase {
     setpoints.put(Setpoint.STATE_2, 200);
     setpoints.put(Setpoint.STATE_3, 300);
 
-    motor = CTREFactory.createDefaultTalon(RobotMap.ElevatorMap.master);
+    motor = TalonSRXFactory.createDefaultTalon(RobotMap.ElevatorMap.master);
 
     motor.configPeakCurrentLimit(CurrentLimit);
     motor.configPeakCurrentDuration(0);
