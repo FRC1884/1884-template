@@ -1,4 +1,1 @@
-
-public class Xbox extends ButtonMap{
-    
-}
+public class Xbox extends ButtonMap {}
