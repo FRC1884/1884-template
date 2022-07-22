@@ -4,17 +4,14 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.DemandType;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
-
-import java.util.HashSet;
-import java.util.LinkedHashMap;
-import java.util.Set;
-
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Subsystem;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.Robot;
 import frc.robot.RobotMap;
 import frc.util.talon.CTREFactory;
+import java.util.HashSet;
+import java.util.LinkedHashMap;
+import java.util.Set;
 
 public class ExampleElevator extends SubsystemBase {
   private static ExampleElevator instance;
@@ -22,8 +19,7 @@ public class ExampleElevator extends SubsystemBase {
   private static final int CurrentLimit = 20;
 
   public static ExampleElevator getInstance() {
-    if (instance == null)
-      instance = new ExampleElevator();
+    if (instance == null) instance = new ExampleElevator();
     return instance;
   }
 
@@ -119,7 +115,6 @@ public class ExampleElevator extends SubsystemBase {
 
         return reqs;
       }
-
     };
   }
 
@@ -130,5 +125,4 @@ public class ExampleElevator extends SubsystemBase {
   public boolean isAtSetpoint() {
     return (Math.abs(getError()) < kElevatorTolerance);
   }
-
 }
