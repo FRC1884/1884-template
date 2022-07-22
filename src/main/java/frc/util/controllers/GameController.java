@@ -29,4 +29,8 @@ public class GameController extends Joystick {
       return value;
     }
   }
+
+  public double getTrigger(ButtonMap.Trigger trigger){
+    return this.getRawAxis(map.triggerMap().get(trigger));
+  }
 }
