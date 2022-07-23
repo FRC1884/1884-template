@@ -1,5 +1,7 @@
 package frc.robot;
 
+import frc.util.controllers.*;
+import frc.robot.RobotMap;
 public class OI {
   private static OI instance;
 
@@ -8,5 +10,11 @@ public class OI {
       instance = new OI();
     }
     return instance;
+  }
+  
+  private GameController driver;
+  private GameController operator;
+
+  private OI(){
   }
 }
