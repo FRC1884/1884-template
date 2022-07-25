@@ -37,11 +37,11 @@ public class GameController extends Joystick {
   public int getDpadAngle() {
 		return this.getPOV();
 	}
-  public class dpadTriggerButton extends Button{
+  public class DpadTriggerButton extends Button{
     private int buttonAngle;
     private GameController controller;
 
-    public dpadTriggerButton(GameController controller, int dpadButtonAngle){
+    public DpadTriggerButton(GameController controller, int dpadButtonAngle){
       this.buttonAngle = dpadButtonAngle;
       this.controller = controller;
     }
