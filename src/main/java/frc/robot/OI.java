@@ -2,6 +2,7 @@ package frc.robot;
 
 import frc.util.controllers.*;
 import frc.robot.RobotMap;
+
 public class OI {
   private static OI instance;
 
@@ -11,10 +12,12 @@ public class OI {
     }
     return instance;
   }
-  
+
   private GameController driver;
   private GameController operator;
 
-  private OI(){
+  private OI() {
+    driver = new GameController(RobotMap.ControllerMap.DRIVER_JOYSTICK, new Logitech());
+    operator = new GameController(RobotMap.ControllerMap.OPERATOR_JOYSTICK, new Logitech());
   }
 }
