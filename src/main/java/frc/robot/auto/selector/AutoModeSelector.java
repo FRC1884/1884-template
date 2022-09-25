@@ -5,16 +5,17 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.auto.modes.DoNothing;
 
 public class AutoModeSelector {
-  private final SendableChooser<AutoModeList> mModeChooser;
+  private final SendableChooser<AutoModeList> modeChooser;
 
-  private final DoNothing doNothing = new DoNothing();
+  //private final DoNothing doNothing = new DoNothing();
 
   public AutoModeSelector() {
-    mModeChooser = new SendableChooser<>();
-    mModeChooser.setDefaultOption("DO NOTHING", AutoModeList.DO_NOTHING);
-    // mModeChooser.addOption(name, enum);
-
-    SmartDashboard.putData(mModeChooser);
+    modeChooser = new SendableChooser<>();
+    //ModeChooser.addOption(name, enum);
+    modeChooser.setDefaultOption("DO NOTHING", AutoModeList.DO_NOTHING);
+    modeChooser.addOption("LIFT AND LOWER ELEVATOR", AutoModeList.LIFT_AND_LOWER_ELEVATOR);
+    
+    SmartDashboard.putData(modeChooser);
   }
 
   public void updateAutoModeSelector() {}

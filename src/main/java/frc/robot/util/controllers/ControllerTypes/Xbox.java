@@ -1,6 +1,12 @@
-package frc.robot.util.controllers;
+package frc.robot.util.controllers.ControllerTypes;
 
 import java.util.HashMap;
+
+import frc.robot.util.controllers.ButtonMap;
+import frc.robot.util.controllers.ButtonMap.Axis;
+import frc.robot.util.controllers.ButtonMap.Button;
+import frc.robot.util.controllers.ButtonMap.Dpad;
+import frc.robot.util.controllers.ButtonMap.Trigger;
 
 public class Xbox implements ButtonMap {
   @Override

@@ -1,11 +1,11 @@
 package frc.robot.util.controllers;
 
 
-public abstract class driverMap extends CommandMap {
+public abstract class DriverMap extends CommandMap {
   protected GameController driver;
 
-  public driverMap(GameController stick) {
-    super(stick);
-    driver = stick;
+  public DriverMap(GameController controller) {
+    super(controller);
+    driver = controller;
   }
 }

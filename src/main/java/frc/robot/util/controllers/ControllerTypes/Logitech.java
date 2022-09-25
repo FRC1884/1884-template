@@ -1,8 +1,14 @@
-package frc.robot.util.controllers;
+package frc.robot.util.controllers.ControllerTypes;
 
 import java.util.HashMap;
 
-public class Playstation implements ButtonMap {
+import frc.robot.util.controllers.ButtonMap;
+import frc.robot.util.controllers.ButtonMap.Axis;
+import frc.robot.util.controllers.ButtonMap.Button;
+import frc.robot.util.controllers.ButtonMap.Dpad;
+import frc.robot.util.controllers.ButtonMap.Trigger;
+
+public class Logitech implements ButtonMap {
   @Override
   public HashMap<Button, Integer> buttonMap() {
     var map = new HashMap<Button, Integer>();
@@ -15,10 +21,10 @@ public class Playstation implements ButtonMap {
     map.put(Button.BUTTON_RIGHT_JOYSTICK, 12);
     map.put(Button.BUTTON_LEFT_BUMPER, 5);
     map.put(Button.BUTTON_RIGHT_BUMPER, 6);
-    map.put(Button.BUTTON_SHARE, 9);
+    map.put(Button.BUTTON_SHARE, 9); // Back Button
     map.put(Button.BUTTON_OPTIONS, 10);
-    map.put(Button.BUTTON_START, 13);
-    map.put(Button.BUTTON_TOUCHPAD, 14);
+    map.put(Button.BUTTON_START, 10);
+    // map.put(Button.BUTTON_TOUCHPAD, 11);
 
     return map;
   }
@@ -39,10 +45,10 @@ public class Playstation implements ButtonMap {
 
     map.put(Axis.AXIS_LEFT_X, 0);
     map.put(Axis.AXIS_LEFT_Y, 1);
-    map.put(Axis.AXIS_RIGHT_X, 4);
-    map.put(Axis.AXIS_RIGHT_Y, 5);
-    map.put(Axis.AXIS_LEFT_TRIGGER, 2);
-    map.put(Axis.AXIS_RIGHT_TRIGGER, 3);
+    map.put(Axis.AXIS_RIGHT_X, 2);
+    map.put(Axis.AXIS_RIGHT_Y, 3);
+    map.put(Axis.AXIS_LEFT_TRIGGER, 4);
+    map.put(Axis.AXIS_RIGHT_TRIGGER, 5);
     return map;
   }
 
