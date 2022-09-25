@@ -1,6 +1,5 @@
 package frc.robot.util.controllers;
 
-
 public abstract class CommandMap {
 
   protected GameController joystick;

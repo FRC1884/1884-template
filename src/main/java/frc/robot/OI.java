@@ -1,7 +1,7 @@
 package frc.robot;
 
-import frc.robot.util.controllers.GameController;
 import frc.robot.util.controllers.ControllerTypes.Logitech;
+import frc.robot.util.controllers.GameController;
 
 public class OI {
   private static OI instance;

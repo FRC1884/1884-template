@@ -1,6 +1,5 @@
 package frc.robot.util.controllers;
 
-
 public abstract class DriverMap extends CommandMap {
   protected GameController driver;
 
