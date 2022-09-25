@@ -14,8 +14,8 @@ import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.subsystems.SwerveDrive;
-import frc.util.MathUtils;
-import frc.util.controllers.ButtonMap;
+import frc.robot.util.MathUtils;
+import frc.robot.util.controllers.ButtonMap;
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to

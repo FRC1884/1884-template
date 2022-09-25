@@ -1,12 +1,8 @@
 package frc.robot;
 
-<<<<<<< HEAD
 import frc.robot.RobotMap;
-import frc.robot.util.controllers.*;
-=======
-import frc.util.controllers.GameController;
-import frc.util.controllers.Logitech;
->>>>>>> c57ba2912b8634cef73ce58c62dfbcbe57fb2bb1
+import frc.robot.util.controllers.GameController;
+import frc.robot.util.controllers.Logitech;
 
 public class OI {
   private static OI instance;
