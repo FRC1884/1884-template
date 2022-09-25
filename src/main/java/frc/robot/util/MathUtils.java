@@ -5,7 +5,7 @@ public class MathUtils {
   /**
    * Kills the signal if it is less than the deadband.
    *
-   * @param value    The value to be modified.
+   * @param value The value to be modified.
    * @param deadband The deadband.
    * @return The modified value.
    */
@@ -22,8 +22,7 @@ public class MathUtils {
   }
 
   /**
-   * Modifies a joystick to make it easier to control for things like drivetrains
-   * and lifts and
+   * Modifies a joystick to make it easier to control for things like drivetrains and lifts and
    * lifts
    *
    * @param value The value to be modified.
