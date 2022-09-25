@@ -1,10 +1,5 @@
-package frc.robot.util.controllers.ControllerTypes;
+package frc.robot.util.controllers;
 
-import frc.robot.util.controllers.ButtonMap;
-import frc.robot.util.controllers.ButtonMap.Axis;
-import frc.robot.util.controllers.ButtonMap.Button;
-import frc.robot.util.controllers.ButtonMap.Dpad;
-import frc.robot.util.controllers.ButtonMap.Trigger;
 import java.util.HashMap;
 
 public class Playstation implements ButtonMap {

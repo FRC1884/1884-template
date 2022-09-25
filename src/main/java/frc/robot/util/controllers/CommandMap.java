@@ -2,13 +2,11 @@ package frc.robot.util.controllers;
 
 public abstract class CommandMap {
 
-  protected GameController joystick;
+  protected GameController controller;
 
-  public CommandMap(GameController stick) {
-    joystick = stick;
+  public CommandMap(GameController c) {
+    controller = c;
   }
 
-  public abstract void getController();
-
-  public abstract void registerController();
+  public abstract void registerCommands();
 }

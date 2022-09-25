@@ -1,7 +1,8 @@
 package frc.robot;
 
-import frc.robot.util.controllers.ControllerTypes.Logitech;
+import frc.robot.layout.TwoJoyStickDriverMap;
 import frc.robot.util.controllers.GameController;
+import frc.robot.util.controllers.Logitech;
 
 public class OI {
   private static OI instance;
@@ -23,6 +24,11 @@ public class OI {
 
   public GameController getOperator() {
     return operator;
+  }
+
+  public void registerCommands() {
+    new TwoJoyStickDriverMap(driver).registerCommands();
+    // operator.registerCommands();
   }
 
   private OI() {

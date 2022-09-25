@@ -1,11 +1,10 @@
 package frc.robot.util;
 
-// TODO do we want to move this class somee where else or integrate it into the joysticks?
 public class MathUtils {
   /**
    * Kills the signal if it is less than the deadband.
    *
-   * @param value The value to be modified.
+   * @param value    The value to be modified.
    * @param deadband The deadband.
    * @return The modified value.
    */
@@ -22,13 +21,12 @@ public class MathUtils {
   }
 
   /**
-   * Modifies a joystick to make it easier to control for things like drivetrains and lifts and
-   * lifts
+   * Squares the input. keeps the sign.
    *
    * @param value The value to be modified.
    * @return Deadbanded and squared value.
    */
-  public static double modifyAxis(double value) {
+  public static double signSquare(double value) {
     // Deadband
     value = deadband(value, 0.05);
 

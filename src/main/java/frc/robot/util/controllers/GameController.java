@@ -3,6 +3,7 @@ package frc.robot.util.controllers;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.button.Button;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import frc.robot.util.MathUtils;
 
 public class GameController extends Joystick {
   private final double DEADZONE = 0.1;
@@ -24,11 +25,8 @@ public class GameController extends Joystick {
 
   public double getAxis(ButtonMap.Axis axis) {
     double value = this.getRawAxis(map.axisMap().get(axis));
-    if (Math.abs(value) < DEADZONE) {
-      return 0;
-    } else {
-      return value;
-    }
+
+    return MathUtils.signSquare(MathUtils.deadband(value, DEADZONE));
   }
 
   public double getTrigger(ButtonMap.Trigger trigger) {
