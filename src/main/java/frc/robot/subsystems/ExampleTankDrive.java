@@ -1,17 +1,19 @@
 package frc.robot.subsystems;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.Subsystem;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
-
-
-
-import frc.util.drivers.TalonSRXFactory;
 import frc.robot.RobotMap;
+import frc.robot.util.drivers.TalonSRXFactory;
 
 public class ExampleTankDrive extends SubsystemBase{
     private static ExampleTankDrive instance;
@@ -66,6 +68,24 @@ public class ExampleTankDrive extends SubsystemBase{
         motor.configPeakOutputForward(1);
         motor.configPeakOutputReverse(-1);
         motor.setNeutralMode(NeutralMode.Brake);
+    }
+
+    public Command driveToCommand(double pos) {
+        return new Command(){
+            @Override
+            public void initialize() {
+                Command.super.initialize();
+            }
+
+            @Override
+            public Set<Subsystem> getRequirements() {
+                var reqs = new HashSet<Subsystem>();
+
+                reqs.add(ExampleTankDrive.getInstance());
+                return reqs;
+            }
+            
+        };
     }
 
 }

@@ -1,24 +1,24 @@
-package frc.util.controllers;
+package frc.robot.util.controllers;
 
 import java.util.HashMap;
 
-public class Playstation implements ButtonMap {
+public class Xbox implements ButtonMap {
   @Override
   public HashMap<Button, Integer> buttonMap() {
     var map = new HashMap<Button, Integer>();
 
-    map.put(Button.BUTTON_X, 1);
-    map.put(Button.BUTTON_A, 2);
-    map.put(Button.BUTTON_B, 3);
+    map.put(Button.BUTTON_A, 1);
+    map.put(Button.BUTTON_B, 2);
+    map.put(Button.BUTTON_X, 3);
     map.put(Button.BUTTON_Y, 4);
-    map.put(Button.BUTTON_LEFT_JOYSTICK, 11);
-    map.put(Button.BUTTON_RIGHT_JOYSTICK, 12);
+    map.put(Button.BUTTON_LEFT_JOYSTICK, 9);
+    map.put(Button.BUTTON_RIGHT_JOYSTICK, 10);
     map.put(Button.BUTTON_LEFT_BUMPER, 5);
     map.put(Button.BUTTON_RIGHT_BUMPER, 6);
-    map.put(Button.BUTTON_SHARE, 9);
-    map.put(Button.BUTTON_OPTIONS, 10);
-    map.put(Button.BUTTON_START, 13);
-    map.put(Button.BUTTON_TOUCHPAD, 14);
+    map.put(Button.BUTTON_SHARE, 7);
+    map.put(Button.BUTTON_OPTIONS, 8);
+    // map.put(Button.BUTTON_START, 10);
+    // map.put(Button.BUTTON_TOUCHPAD, 11);
 
     return map;
   }
@@ -27,8 +27,8 @@ public class Playstation implements ButtonMap {
   public HashMap<Trigger, Integer> triggerMap() {
     var map = new HashMap<Trigger, Integer>();
 
-    map.put(Trigger.BUTTON_LEFT_TRIGGER, 7);
-    map.put(Trigger.BUTTON_RIGHT_TRIGGER, 8);
+    map.put(Trigger.BUTTON_LEFT_TRIGGER, 0);
+    map.put(Trigger.BUTTON_RIGHT_TRIGGER, 1);
 
     return map;
   }
