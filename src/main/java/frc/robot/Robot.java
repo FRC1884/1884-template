@@ -4,8 +4,18 @@
 
 package frc.robot;
 
+import static frc.robot.RobotMap.DriveMap.BACK_LEFT_MODULE_STEER_MOTOR;
+import static frc.robot.RobotMap.DriveMap.BACK_RIGHT_MODULE_STEER_MOTOR;
+import static frc.robot.RobotMap.DriveMap.FRONT_LEFT_MODULE_STEER_MOTOR;
+import static frc.robot.RobotMap.DriveMap.FRONT_RIGHT_MODULE_STEER_MOTOR;
+
+import com.ctre.phoenix.motorcontrol.can.TalonFX;
+import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.wpilibj.TimedRobot;
-import frc.robot.subsystems.*;
+import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import frc.robot.subsystems.SwerveDrive;
+import frc.util.MathUtils;
+import frc.util.controllers.ButtonMap;
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -21,9 +31,38 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
-    // TODO put auto chooser here.
+    // TODO put auto chooser here. make sure to use the one from
+    // robot/auto/selector/AutoModeSelector.java
 
-    ExampleElevator.getInstance();
+    // ExampleElevator.getInstance();
+
+    var oi = OI.getInstance();
+
+    var brr = new TalonFX(BACK_RIGHT_MODULE_STEER_MOTOR);
+    var blr = new TalonFX(BACK_LEFT_MODULE_STEER_MOTOR);
+    var frr = new TalonFX(FRONT_RIGHT_MODULE_STEER_MOTOR);
+    var flr = new TalonFX(FRONT_LEFT_MODULE_STEER_MOTOR);
+
+    brr.setSelectedSensorPosition(0, 0, 20);
+    blr.setSelectedSensorPosition(0, 0, 20);
+    frr.setSelectedSensorPosition(0, 0, 20);
+    flr.setSelectedSensorPosition(0, 0, 20);
+
+    var swerve = SwerveDrive.getInstance();
+    swerve.zeroGyroscope();
+
+    // ? this is all the binding stuff, maybe let's move it somewhere else?
+    swerve.setDefaultCommand(
+        swerve.driveCommand(
+            () ->
+                ChassisSpeeds.fromFieldRelativeSpeeds(
+                    -MathUtils.modifyAxis(oi.getDriver().getAxis(ButtonMap.Axis.AXIS_LEFT_Y))
+                        * SwerveDrive.MAX_VELOCITY_METERS_PER_SECOND,
+                    -MathUtils.modifyAxis(oi.getDriver().getAxis(ButtonMap.Axis.AXIS_LEFT_X))
+                        * SwerveDrive.MAX_VELOCITY_METERS_PER_SECOND,
+                    -MathUtils.modifyAxis(oi.getDriver().getAxis(ButtonMap.Axis.AXIS_RIGHT_X))
+                        * SwerveDrive.MAX_ANGULAR_VELOCITY_RADIANS_PER_SECOND,
+                    swerve.getGyroscopeRotation())));
   }
 
   /**
@@ -34,7 +73,9 @@ public class Robot extends TimedRobot {
    * SmartDashboard integrated updating.
    */
   @Override
-  public void robotPeriodic() {}
+  public void robotPeriodic() {
+    CommandScheduler.getInstance().run();
+  }
 
   /**
    * This autonomous (along with the chooser code above) shows how to select between different
@@ -55,7 +96,10 @@ public class Robot extends TimedRobot {
 
   /** This function is called once when teleop is enabled. */
   @Override
-  public void teleopInit() {}
+  public void teleopInit() {
+    // TODO figure out how cancel auto maybe this?
+    CommandScheduler.getInstance().cancelAll();
+  }
 
   /** This function is called periodically during operator control. */
   @Override
