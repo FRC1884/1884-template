@@ -15,60 +15,56 @@ import edu.wpi.first.math.geometry.Rotation2d;
 import frc.robot.RobotMap;
 import frc.robot.util.drivers.TalonSRXFactory;
 
-public class ExampleTankDrive extends SubsystemBase{
-    private static ExampleTankDrive instance;
-    public static ExampleTankDrive getInstance() {
-        if (instance == null) instance = new ExampleTankDrive();
-        return instance;
-    }
-    //Motors
-    public TalonSRX leftFront;
-    public TalonSRX leftBack;
-    public TalonSRX rightFront;
-    public TalonSRX rightBack;
+public class ExampleTankDrive extends SubsystemBase {
+  private static ExampleTankDrive instance;
 
-    //Gains
-    private static final double kP = 0.1;
-    private static final double kI = 0.1;
-    private static final double kD = 0.1;
-    private static final double kF = 0.1;
+  public static ExampleTankDrive getInstance() {
+    if (instance == null) instance = new ExampleTankDrive();
+    return instance;
+  }
 
-    private static final int kMMacceleration = (1000); // sensorUnitsPer100msPerSec
-    private static final int kMMvelocity = (1000); // sensorUnitsPer100ms
+  // Motors
+  public TalonSRX leftFront;
+  public TalonSRX leftBack;
+  public TalonSRX rightFront;
+  public TalonSRX rightBack;
 
-    private static final int kElevatorTolerance = 1000;
+  // Gains
+  private static final double kP = 0.1;
+  private static final double kI = 0.1;
+  private static final double kD = 0.1;
+  private static final double kF = 0.1;
 
-    public ExampleTankDrive() {
+  private static final int kMMacceleration = (1000); // sensorUnitsPer100msPerSec
+  private static final int kMMvelocity = (1000); // sensorUnitsPer100ms
 
-        leftFront = TalonSRXFactory.createDefaultTalon(RobotMap.TankDriveMap.leftFrontMaster);
-        leftBack = TalonSRXFactory.createDefaultTalon(RobotMap.TankDriveMap.leftBackMaster);
-        rightFront = TalonSRXFactory.createDefaultTalon(RobotMap.TankDriveMap.rightFrontMaster);
-        rightBack = TalonSRXFactory.createDefaultTalon(RobotMap.TankDriveMap.rightBackMaster);
+  private static final int kElevatorTolerance = 1000;
 
-        configPID(leftFront);
-        configPID(leftBack);
-        configPID(rightFront);
-        configPID(rightBack);
+  public ExampleTankDrive() {
 
-    }
-    
+    leftFront = TalonSRXFactory.createDefaultTalon(RobotMap.TankDriveMap.leftFrontMaster);
+    leftBack = TalonSRXFactory.createDefaultTalon(RobotMap.TankDriveMap.leftBackMaster);
+    rightFront = TalonSRXFactory.createDefaultTalon(RobotMap.TankDriveMap.rightFrontMaster);
+    rightBack = TalonSRXFactory.createDefaultTalon(RobotMap.TankDriveMap.rightBackMaster);
 
-    public void configPID(TalonSRX motor) {
-        motor.config_kP(0, kP, 0);
-        motor.config_kI(0, kI, 0);
-        motor.config_kD(0, kD, 0);
-        motor.config_kF(0, kF, 0);
+    configPID(leftFront);
+    configPID(leftBack);
+    configPID(rightFront);
+    configPID(rightBack);
+  }
 
-        motor.configMotionAcceleration(kMMacceleration);
-        motor.configMotionCruiseVelocity(kMMvelocity);
+  public void configPID(TalonSRX motor) {
+    motor.config_kP(0, kP, 0);
+    motor.config_kI(0, kI, 0);
+    motor.config_kD(0, kD, 0);
+    motor.config_kF(0, kF, 0);
 
-        motor.setSensorPhase(true);
-        motor.overrideLimitSwitchesEnable(false);
+    motor.configMotionAcceleration(kMMacceleration);
+    motor.configMotionCruiseVelocity(kMMvelocity);
 
-        motor.configPeakOutputForward(1);
-        motor.configPeakOutputReverse(-1);
-        motor.setNeutralMode(NeutralMode.Brake);
-    }
+    motor.setSensorPhase(true);
+    motor.overrideLimitSwitchesEnable(false);
+}
 
     public Command driveToCommand(double pos) {
         return new Command(){
