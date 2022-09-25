@@ -17,7 +17,6 @@ public abstract class DriverMap extends CommandMap {
   public void registerCommands() {
     var swerve = SwerveDrive.getInstance();
 
-    swerve.setDefaultCommand(
-        swerve.driveCommand(this::getChassisSpeeds));
+    swerve.setDefaultCommand(swerve.driveCommand(this::getChassisSpeeds));
   }
 }
