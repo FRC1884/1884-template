@@ -1,6 +1,5 @@
 package frc.robot;
 
-import frc.robot.RobotMap;
 import frc.robot.util.controllers.GameController;
 import frc.robot.util.controllers.Logitech;
 

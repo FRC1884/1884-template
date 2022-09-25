@@ -13,6 +13,7 @@ public class GameController extends Joystick {
     super(gamepadPort);
     this.map = map;
   }
+
   public JoystickButton getButton(ButtonMap.Button button) {
     return new JoystickButton(this, map.buttonMap().get(button));
   }
@@ -30,26 +31,26 @@ public class GameController extends Joystick {
     }
   }
 
-  public double getTrigger(ButtonMap.Trigger trigger){
+  public double getTrigger(ButtonMap.Trigger trigger) {
     return this.getRawAxis(map.triggerMap().get(trigger));
   }
 
   public int getDpadAngle() {
-		return this.getPOV();
-	}
-  public class DpadTriggerButton extends Button{
+    return this.getPOV();
+  }
+
+  public class DpadTriggerButton extends Button {
     private int buttonAngle;
     private GameController controller;
 
-    public DpadTriggerButton(GameController controller, int dpadButtonAngle){
+    public DpadTriggerButton(GameController controller, int dpadButtonAngle) {
       this.buttonAngle = dpadButtonAngle;
       this.controller = controller;
     }
 
     @Override
-    public boolean get(){
+    public boolean get() {
       return this.controller.getDpadAngle() == this.buttonAngle;
     }
   }
-
 }

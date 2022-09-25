@@ -15,8 +15,8 @@ public class Logitech implements ButtonMap {
     map.put(Button.BUTTON_RIGHT_JOYSTICK, 12);
     map.put(Button.BUTTON_LEFT_BUMPER, 5);
     map.put(Button.BUTTON_RIGHT_BUMPER, 6);
-    map.put(Button.BUTTON_SHARE, 9); //Back Button
-    map.put(Button.BUTTON_OPTIONS, 10); 
+    map.put(Button.BUTTON_SHARE, 9); // Back Button
+    map.put(Button.BUTTON_OPTIONS, 10);
     map.put(Button.BUTTON_START, 10);
     // map.put(Button.BUTTON_TOUCHPAD, 11);
 
