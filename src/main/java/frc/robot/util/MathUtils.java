@@ -4,7 +4,7 @@ public class MathUtils {
   /**
    * Kills the signal if it is less than the deadband.
    *
-   * @param value    The value to be modified.
+   * @param value The value to be modified.
    * @param deadband The deadband.
    * @return The modified value.
    */
