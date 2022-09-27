@@ -199,7 +199,6 @@ public class SwerveDrive extends SubsystemBase {
   }
 
   public void drive(ChassisSpeeds newChassisSpeeds) {
-    // System.out.println(newChassisSpeeds.toString());
     chassisSpeeds = newChassisSpeeds;
     setSwerveModuleState(chassisSpeeds);
   }
@@ -237,7 +236,6 @@ public class SwerveDrive extends SubsystemBase {
     SwerveDriveKinematics.desaturateWheelSpeeds(states, MAX_VELOCITY_METERS_PER_SECOND);
 
     swerveDriveOdometry.update(getGyroscopeRotation(), states);
-    System.out.println(pigeon.getState());
 
     frontLeftModule.set(
         states[0].speedMetersPerSecond / MAX_VELOCITY_METERS_PER_SECOND * MAX_VOLTAGE,
