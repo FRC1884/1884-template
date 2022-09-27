@@ -19,7 +19,8 @@ public class TwoJoyStickDriverMap extends DriverMap {
         controller.getAxis(Axis.AXIS_RIGHT_X)
             * SwerveDrive.MAX_ANGULAR_VELOCITY_RADIANS_PER_SECOND * 0.1;
 
-    return new ChassisSpeeds(-x, -y, -rot);
+    return new ChassisSpeeds(-x, -y, -rot,  swerve.getGyroscopeRotation());
+    var swerve = SwerveDrive.getInstance();
   }
 
   @Override
