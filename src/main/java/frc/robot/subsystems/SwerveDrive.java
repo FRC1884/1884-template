@@ -40,6 +40,7 @@ import edu.wpi.first.math.trajectory.TrapezoidProfile;
 import edu.wpi.first.wpilibj.shuffleboard.BuiltInLayouts;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.PerpetualCommand;
 import edu.wpi.first.wpilibj2.command.RunCommand;
@@ -209,16 +210,24 @@ public class SwerveDrive extends SubsystemBase {
 
   public PPSwerveControllerCommand autoPath(String path) {
     PathPlannerTrajectory autoTestPath = PathPlanner.loadPath(path, 8, 5);
+    
+    // Create PIDControllers for each movement (and set default values)
+    PIDController xPID = new PIDController(0.1, 0.0, 0.0);
+    PIDController yPID = new PIDController(0.1, 0.0, 0.0);
+    ProfiledPIDController thetaPID = new ProfiledPIDController(70 / 360, 0.0, 0.0, new TrapezoidProfile.Constraints(8.0, 5.0));
+
+    // Create PID tuning widgets in Glass (not for use in competition)
+    SmartDashboard.putData("x-input PID Controller", xPID);
+    SmartDashboard.putData("y-input PID Controller", yPID);
+    SmartDashboard.putData("rot PID Controller", thetaPID);
+
     return new PPSwerveControllerCommand(
         autoTestPath,
         this::getPose,
         kinematics,
-        new PIDController(
-            0.1, 0.0,
-            0.0), // someone else used 15, 0.1, 0.01 which is an alternate, but pls edit these as
-        // nesscary
-        new PIDController(0.1, 0.0, 0.0),
-        new ProfiledPIDController(70 / 360, 0.0, 0.0, new TrapezoidProfile.Constraints(8.0, 5.0)),
+        xPID,
+        yPID,
+        thetaPID,
         this::setSwerveModuleState,
         this);
   }
