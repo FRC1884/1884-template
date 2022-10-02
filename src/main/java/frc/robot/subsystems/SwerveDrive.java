@@ -210,11 +210,12 @@ public class SwerveDrive extends SubsystemBase {
 
   public PPSwerveControllerCommand autoPath(String path) {
     PathPlannerTrajectory autoTestPath = PathPlanner.loadPath(path, 8, 5);
-    
+
     // Create PIDControllers for each movement (and set default values)
     PIDController xPID = new PIDController(0.1, 0.0, 0.0);
     PIDController yPID = new PIDController(0.1, 0.0, 0.0);
-    ProfiledPIDController thetaPID = new ProfiledPIDController(70 / 360, 0.0, 0.0, new TrapezoidProfile.Constraints(8.0, 5.0));
+    ProfiledPIDController thetaPID =
+        new ProfiledPIDController(70 / 360, 0.0, 0.0, new TrapezoidProfile.Constraints(8.0, 5.0));
 
     // Create PID tuning widgets in Glass (not for use in competition)
     SmartDashboard.putData("x-input PID Controller", xPID);
