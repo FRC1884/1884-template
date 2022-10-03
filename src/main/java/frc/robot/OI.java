@@ -2,7 +2,6 @@ package frc.robot;
 
 import frc.robot.layout.TwoJoyStickDriverMap;
 import frc.robot.util.controllers.GameController;
-import frc.robot.util.controllers.Logitech;
 import frc.robot.util.controllers.LogitechVar2;
 
 public class OI {

@@ -39,7 +39,10 @@ public class Logitech implements ButtonMap {
 
     map.put(Axis.AXIS_LEFT_X, 0);
     map.put(Axis.AXIS_LEFT_Y, 1);
-    map.put(Axis.AXIS_RIGHT_X, 2); //Trigger and Joystick are sometimes Switched OM and YIFEI!! Therefore this will not work for every Logitech controller
+    map.put(
+        Axis.AXIS_RIGHT_X,
+        2); // Trigger and Joystick are sometimes Switched OM and YIFEI!! Therefore this will not
+            // work for every Logitech controller
     map.put(Axis.AXIS_RIGHT_Y, 3);
     map.put(Axis.AXIS_LEFT_TRIGGER, 4);
     map.put(Axis.AXIS_RIGHT_TRIGGER, 5);
