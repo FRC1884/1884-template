@@ -3,6 +3,7 @@ package frc.robot;
 import frc.robot.layout.TwoJoyStickDriverMap;
 import frc.robot.util.controllers.GameController;
 import frc.robot.util.controllers.Logitech;
+import frc.robot.util.controllers.LogitechVar2;
 
 public class OI {
   private static OI instance;
@@ -32,7 +33,8 @@ public class OI {
   }
 
   private OI() {
-    driver = new GameController(RobotMap.ControllerMap.DRIVER_JOYSTICK, new Logitech());
+    // driver = new GameController(RobotMap.ControllerMap.DRIVER_JOYSTICK, new Logitech());
+    driver = new GameController(RobotMap.ControllerMap.DRIVER_JOYSTICK, new LogitechVar2());
     // operator = new GameController(RobotMap.ControllerMap.OPERATOR_JOYSTICK, new Logitech());
   }
 }

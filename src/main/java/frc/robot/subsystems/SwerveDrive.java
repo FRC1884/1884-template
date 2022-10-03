@@ -20,7 +20,7 @@ import static frc.robot.RobotMap.DriveMap.FRONT_RIGHT_MODULE_STEER_ENCODER;
 import static frc.robot.RobotMap.DriveMap.FRONT_RIGHT_MODULE_STEER_MOTOR;
 import static frc.robot.RobotMap.DriveMap.FRONT_RIGHT_MODULE_STEER_OFFSET;
 
-import com.ctre.phoenix.sensors.PigeonIMU;
+import com.ctre.phoenix.sensors.WPI_PigeonIMU;
 import com.omagarwal25.swervelib.Mk4SwerveModuleHelper;
 import com.omagarwal25.swervelib.SdsModuleConfigurations;
 import com.omagarwal25.swervelib.SwerveModule;
@@ -111,7 +111,7 @@ public class SwerveDrive extends SubsystemBase {
   // the robot counter-clockwise should
   // cause the angle reading to increase until it wraps back over to zero.
   // FIXME Remove if you are using a Pigeon
-  private final PigeonIMU pigeon = new PigeonIMU(DRIVETRAIN_PIGEON_ID);
+  private final WPI_PigeonIMU pigeon = new WPI_PigeonIMU(DRIVETRAIN_PIGEON_ID);
 
   // These are our modules. We initialize them in the constructor.
   private final SwerveModule frontLeftModule;
@@ -196,6 +196,8 @@ public class SwerveDrive extends SubsystemBase {
   }
 
   public Rotation2d getGyroscopeRotation() {
+    SmartDashboard.putData("PigeonIMU rotation", pigeon);
+    
     return Rotation2d.fromDegrees(pigeon.getFusedHeading());
   }
 
