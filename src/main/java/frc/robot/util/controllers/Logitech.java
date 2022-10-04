@@ -3,6 +3,12 @@ package frc.robot.util.controllers;
 import java.util.HashMap;
 
 public class Logitech implements ButtonMap {
+  int version; // Version 1 or Version 2
+
+  public Logitech(int version) {
+    this.version = version;
+  }
+
   @Override
   public HashMap<Button, Integer> buttonMap() {
     var map = new HashMap<Button, Integer>();
@@ -35,17 +41,28 @@ public class Logitech implements ButtonMap {
 
   @Override
   public HashMap<Axis, Integer> axisMap() {
-    var map = new HashMap<Axis, Integer>();
+    var map = chooseAxisVersion();
+    return map;
+  }
+
+  public HashMap<Axis, Integer> axisMapVar1(HashMap<Axis, Integer> map) {
 
     map.put(Axis.AXIS_LEFT_X, 0);
     map.put(Axis.AXIS_LEFT_Y, 1);
-    map.put(
-        Axis.AXIS_RIGHT_X,
-        2); // Trigger and Joystick are sometimes Switched OM and YIFEI!! Therefore this will not
-            // work for every Logitech controller
+    map.put(Axis.AXIS_RIGHT_X, 2);
     map.put(Axis.AXIS_RIGHT_Y, 3);
     map.put(Axis.AXIS_LEFT_TRIGGER, 4);
     map.put(Axis.AXIS_RIGHT_TRIGGER, 5);
+    return map;
+  }
+
+  public HashMap<Axis, Integer> axisMapVar2(HashMap<Axis, Integer> map) {
+    map.put(Axis.AXIS_LEFT_X, 0);
+    map.put(Axis.AXIS_LEFT_Y, 1);
+    map.put(Axis.AXIS_LEFT_TRIGGER, 2);
+    map.put(Axis.AXIS_RIGHT_TRIGGER, 3);
+    map.put(Axis.AXIS_RIGHT_X, 4);
+    map.put(Axis.AXIS_RIGHT_Y, 5);
     return map;
   }
 
@@ -62,6 +79,16 @@ public class Logitech implements ButtonMap {
     map.put(Dpad.DPAD_LEFT, 270);
     map.put(Dpad.DPAD_UP_LEFT, 315);
 
+    return map;
+  }
+
+  public HashMap<Axis, Integer> chooseAxisVersion() {
+    var map = new HashMap<Axis, Integer>();
+    if (version == 1) {
+      axisMapVar1(map);
+    } else if (version == 2) {
+      axisMapVar2(map);
+    }
     return map;
   }
 }

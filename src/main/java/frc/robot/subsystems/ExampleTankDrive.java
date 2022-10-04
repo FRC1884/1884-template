@@ -11,7 +11,8 @@ public class ExampleTankDrive extends SubsystemBase {
   private static ExampleTankDrive instance;
 
   public static ExampleTankDrive getInstance() {
-    if (instance == null) instance = new ExampleTankDrive();
+    if (instance == null)
+      instance = new ExampleTankDrive();
     return instance;
   }
 
@@ -30,6 +31,7 @@ public class ExampleTankDrive extends SubsystemBase {
   private static final int kMMacceleration = (1000); // sensorUnitsPer100msPerSec
   private static final int kMMvelocity = (1000); // sensorUnitsPer100ms
 
+  // CONSTANTS
   public ExampleTankDrive() {
     leftFront = TalonSRXFactory.createDefaultTalon(RobotMap.TankDriveMap.leftFrontMaster);
     leftBack = TalonSRXFactory.createDefaultTalon(RobotMap.TankDriveMap.leftBackMaster);
@@ -57,5 +59,10 @@ public class ExampleTankDrive extends SubsystemBase {
 
   public Command driveToCommand(double pos) {
     return new InstantCommand(() -> {}, this);
+  }
+
+  @Override
+  public void periodic() {
+
   }
 }
