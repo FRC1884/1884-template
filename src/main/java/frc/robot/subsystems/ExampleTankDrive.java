@@ -11,8 +11,7 @@ public class ExampleTankDrive extends SubsystemBase {
   private static ExampleTankDrive instance;
 
   public static ExampleTankDrive getInstance() {
-    if (instance == null)
-      instance = new ExampleTankDrive();
+    if (instance == null) instance = new ExampleTankDrive();
     return instance;
   }
 
@@ -62,7 +61,5 @@ public class ExampleTankDrive extends SubsystemBase {
   }
 
   @Override
-  public void periodic() {
-
-  }
+  public void periodic() {}
 }
