@@ -3,9 +3,14 @@ package frc.robot.util.controllers;
 import java.util.HashMap;
 
 public class Logitech implements ButtonMap {
-  int version; // Version 1 or Version 2
+  public enum Version {
+    REGULAR,
+    REVERSED_TRIGGER_AND_STICK
+  }
 
-  public Logitech(int version) {
+  Version version; // Version 1 or Version 2
+
+  public Logitech(Version version) {
     this.version = version;
   }
 
@@ -41,12 +46,18 @@ public class Logitech implements ButtonMap {
 
   @Override
   public HashMap<Axis, Integer> axisMap() {
-    var map = chooseAxisVersion();
-    return map;
+    switch (version) {
+      case REGULAR:
+        return axisMapRegular();
+      case REVERSED_TRIGGER_AND_STICK:
+        return axisMapTriggerAndStick();
+      default:
+        return axisMapRegular();
+    }
   }
 
-  public HashMap<Axis, Integer> axisMapVar1(HashMap<Axis, Integer> map) {
-
+  private HashMap<Axis, Integer> axisMapRegular() {
+    var map = new HashMap<Axis, Integer>();
     map.put(Axis.AXIS_LEFT_X, 0);
     map.put(Axis.AXIS_LEFT_Y, 1);
     map.put(Axis.AXIS_RIGHT_X, 2);
@@ -56,7 +67,8 @@ public class Logitech implements ButtonMap {
     return map;
   }
 
-  public HashMap<Axis, Integer> axisMapVar2(HashMap<Axis, Integer> map) {
+  private HashMap<Axis, Integer> axisMapTriggerAndStick() {
+    var map = new HashMap<Axis, Integer>();
     map.put(Axis.AXIS_LEFT_X, 0);
     map.put(Axis.AXIS_LEFT_Y, 1);
     map.put(Axis.AXIS_LEFT_TRIGGER, 2);
@@ -79,16 +91,6 @@ public class Logitech implements ButtonMap {
     map.put(Dpad.DPAD_LEFT, 270);
     map.put(Dpad.DPAD_UP_LEFT, 315);
 
-    return map;
-  }
-
-  public HashMap<Axis, Integer> chooseAxisVersion() {
-    var map = new HashMap<Axis, Integer>();
-    if (version == 1) {
-      axisMapVar1(map);
-    } else if (version == 2) {
-      axisMapVar2(map);
-    }
     return map;
   }
 }
