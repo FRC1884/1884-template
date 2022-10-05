@@ -196,6 +196,7 @@ public class SwerveDrive extends SubsystemBase {
   }
 
   public Rotation2d getGyroscopeRotation() {
+    // Glass widget for the gyroscope
     SmartDashboard.putData("PigeonIMU rotation", pigeon);
 
     return Rotation2d.fromDegrees(pigeon.getFusedHeading());

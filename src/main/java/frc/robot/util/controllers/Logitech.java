@@ -3,10 +3,10 @@ package frc.robot.util.controllers;
 import java.util.HashMap;
 
 public class Logitech implements ButtonMap {
-  int version; // Version 1 or Version 2
+  int variation; // Variation 1 or Variation 2
 
   public Logitech(int version) {
-    this.version = version;
+    this.variation = version;
   }
 
   @Override
@@ -84,9 +84,9 @@ public class Logitech implements ButtonMap {
 
   public HashMap<Axis, Integer> chooseAxisVersion() {
     var map = new HashMap<Axis, Integer>();
-    if (version == 1) {
+    if (variation == 1) {
       axisMapVar1(map);
-    } else if (version == 2) {
+    } else if (variation == 2) {
       axisMapVar2(map);
     }
     return map;

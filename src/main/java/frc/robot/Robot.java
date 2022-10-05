@@ -8,6 +8,7 @@ import static frc.robot.RobotMap.DriveMap.FRONT_RIGHT_MODULE_STEER_MOTOR;
 import com.ctre.phoenix.motorcontrol.can.TalonFX;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import frc.robot.subsystems.SwerveDrive;
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -29,6 +30,7 @@ public class Robot extends TimedRobot {
     // ExampleElevator.getInstance();
 
     OI.getInstance();
+    SwerveDrive.getInstance().zeroGyroscope();
 
     var brr = new TalonFX(BACK_RIGHT_MODULE_STEER_MOTOR);
     var blr = new TalonFX(BACK_LEFT_MODULE_STEER_MOTOR);
