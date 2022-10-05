@@ -22,10 +22,11 @@ public abstract class DriverMap extends CommandMap {
 
     swerve.setDefaultCommand(swerve.driveCommand(this::getChassisSpeeds));
 
-    getPathPlanningTestButton().whenActive(swerve.autoPath(
-      "X,Y,Tangent X,Tangent Y,Fixed Theta,Reversed,Name" +
-      "3.8922493344077345,-3.214252312651087,0.0,0.0,true,false," +
-      "5.238826752618855,-4.048750994359386,0.0,0.0,true,false,"
-      ));
+    getPathPlanningTestButton()
+        .whenActive(
+            swerve.autoPath(
+                "X,Y,Tangent X,Tangent Y,Fixed Theta,Reversed,Name"
+                    + "3.8922493344077345,-3.214252312651087,0.0,0.0,true,false,"
+                    + "5.238826752618855,-4.048750994359386,0.0,0.0,true,false,"));
   }
 }
