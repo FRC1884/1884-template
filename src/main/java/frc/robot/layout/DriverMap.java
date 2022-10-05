@@ -1,6 +1,7 @@
 package frc.robot.layout;
 
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
+import edu.wpi.first.wpilibj.Filesystem;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.subsystems.SwerveDrive;
 import frc.robot.util.controllers.CommandMap;
@@ -22,11 +23,7 @@ public abstract class DriverMap extends CommandMap {
 
     swerve.setDefaultCommand(swerve.driveCommand(this::getChassisSpeeds));
 
-    getPathPlanningTestButton()
-        .whenActive(
-            swerve.autoPath(
-                "X,Y,Tangent X,Tangent Y,Fixed Theta,Reversed,Name"
-                    + "3.8922493344077345,-3.214252312651087,0.0,0.0,true,false,"
-                    + "5.238826752618855,-4.048750994359386,0.0,0.0,true,false,"));
+    System.out.println(Filesystem.getDeployDirectory().listFiles()[0].listFiles()[0].getName() + "YOUR MOM IS MINE");
+    getPathPlanningTestButton().whenActive(swerve.autoPath("Old Way"));
   }
 }

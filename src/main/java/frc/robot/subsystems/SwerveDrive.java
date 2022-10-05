@@ -42,6 +42,7 @@ import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.PerpetualCommand;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -212,13 +213,13 @@ public class SwerveDrive extends SubsystemBase {
   }
 
   public PPSwerveControllerCommand autoPath(String path) {
-    PathPlannerTrajectory autoTestPath = PathPlanner.loadPath(path, 8, 5);
+    PathPlannerTrajectory autoTestPath = PathPlanner.loadPath(path, 1, 1);
 
     // Create PIDControllers for each movement (and set default values)
     PIDController xPID = new PIDController(0.1, 0.0, 0.0);
     PIDController yPID = new PIDController(0.1, 0.0, 0.0);
     ProfiledPIDController thetaPID =
-        new ProfiledPIDController(70 / 360, 0.0, 0.0, new TrapezoidProfile.Constraints(8.0, 5.0));
+        new ProfiledPIDController(10, 0.0, 0.0, new TrapezoidProfile.Constraints(1, 1));
 
     // Create PID tuning widgets in Glass (not for use in competition)
     SmartDashboard.putData("x-input PID Controller", xPID);
