@@ -23,7 +23,9 @@ public abstract class DriverMap extends CommandMap {
 
     swerve.setDefaultCommand(swerve.driveCommand(this::getChassisSpeeds));
 
-    System.out.println(Filesystem.getDeployDirectory().listFiles()[0].listFiles()[0].getName() + "YOUR MOM IS MINE");
+    System.out.println(
+        Filesystem.getDeployDirectory().listFiles()[0].listFiles()[0].getName()
+            + "YOUR MOM IS MINE");
     getPathPlanningTestButton().whenActive(swerve.autoPath("Old Way"));
   }
 }
