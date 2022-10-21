@@ -196,14 +196,14 @@ public class SwerveDrive extends SubsystemBase {
    * facing to the 'forwards' direction.
    */
   public void zeroGyroscope() {
-    // pigeon.fused(0.0); // TODO figure out how to zero a pigeon
+    pigeon.reset();
   }
 
   public Rotation2d getGyroscopeRotation() {
     // Glass widget for the gyroscope
     SmartDashboard.putData("Pigeon2 rotation", pigeon);
 
-    return Rotation2d.fromDegrees(pigeon.getFusedHeading()); // TODO figure to how to zero pigeon
+    return Rotation2d.fromDegrees(pigeon.getYaw());
   }
 
   public void drive(ChassisSpeeds newChassisSpeeds) {

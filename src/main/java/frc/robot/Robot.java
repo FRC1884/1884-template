@@ -30,7 +30,7 @@ public class Robot extends TimedRobot {
     // ExampleElevator.getInstance();
 
     OI.getInstance();
-    SwerveDrive.getInstance().zeroGyroscope();
+    // SwerveDrive.getInstance().zeroGyroscope();
 
     var brr = new TalonFX(BACK_RIGHT_MODULE_STEER_MOTOR);
     var blr = new TalonFX(BACK_LEFT_MODULE_STEER_MOTOR);
