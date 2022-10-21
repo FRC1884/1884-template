@@ -20,6 +20,7 @@ import static frc.robot.RobotMap.DriveMap.FRONT_RIGHT_MODULE_STEER_ENCODER;
 import static frc.robot.RobotMap.DriveMap.FRONT_RIGHT_MODULE_STEER_MOTOR;
 import static frc.robot.RobotMap.DriveMap.FRONT_RIGHT_MODULE_STEER_OFFSET;
 
+import com.ctre.phoenix.sensors.WPI_Pigeon2;
 import com.ctre.phoenix.sensors.WPI_PigeonIMU;
 // import com.omagarwal25.swervelib.Mk4SwerveModuleHelper;
 import com.swervedrivespecialties.swervelib.Mk4SwerveModuleHelper;
@@ -114,7 +115,7 @@ public class SwerveDrive extends SubsystemBase {
   // the robot counter-clockwise should
   // cause the angle reading to increase until it wraps back over to zero.
   // FIXME Remove if you are using a Pigeon
-  private final WPI_PigeonIMU pigeon = new WPI_PigeonIMU(DRIVETRAIN_PIGEON_ID);
+  private final WPI_Pigeon2 pigeon = new WPI_Pigeon2(DRIVETRAIN_PIGEON_ID);
 
   // These are our modules. We initialize them in the constructor.
   private final SwerveModule frontLeftModule;
@@ -195,14 +196,14 @@ public class SwerveDrive extends SubsystemBase {
    * facing to the 'forwards' direction.
    */
   public void zeroGyroscope() {
-    pigeon.setFusedHeading(0.0);
+    // pigeon.fused(0.0); // TODO figure out how to zero a pigeon
   }
 
   public Rotation2d getGyroscopeRotation() {
     // Glass widget for the gyroscope
-    SmartDashboard.putData("PigeonIMU rotation", pigeon);
+    SmartDashboard.putData("Pigeon2 rotation", pigeon);
 
-    return Rotation2d.fromDegrees(pigeon.getFusedHeading());
+    return Rotation2d.fromDegrees(pigeon.getFusedHeading()); // TODO figure to how to zero pigeon
   }
 
   public void drive(ChassisSpeeds newChassisSpeeds) {
