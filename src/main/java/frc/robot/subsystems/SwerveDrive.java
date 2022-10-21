@@ -21,9 +21,12 @@ import static frc.robot.RobotMap.DriveMap.FRONT_RIGHT_MODULE_STEER_MOTOR;
 import static frc.robot.RobotMap.DriveMap.FRONT_RIGHT_MODULE_STEER_OFFSET;
 
 import com.ctre.phoenix.sensors.WPI_PigeonIMU;
-import com.omagarwal25.swervelib.Mk4SwerveModuleHelper;
-import com.omagarwal25.swervelib.SdsModuleConfigurations;
-import com.omagarwal25.swervelib.SwerveModule;
+// import com.omagarwal25.swervelib.Mk4SwerveModuleHelper;
+import com.swervedrivespecialties.swervelib.Mk4SwerveModuleHelper;
+import com.swervedrivespecialties.swervelib.SwerveModule;
+import com.swervedrivespecialties.swervelib.SdsModuleConfigurations;
+// import com.omagarwal25.swervelib.SdsModuleConfigurations;
+// import com.omagarwal25.swervelib.SwerveModule;
 import com.pathplanner.lib.PathPlanner;
 import com.pathplanner.lib.PathPlannerTrajectory;
 import com.pathplanner.lib.commands.PPSwerveControllerCommand;
