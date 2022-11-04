@@ -1,0 +1,11 @@
+{
+  "baseName" : "Integrated Webcam",
+  "uniqueName" : "Integrated_Webcam",
+  "nickname" : "Integrated_Webcam",
+  "FOV" : 70.0,
+  "path" : "\\\\?\\usb#vid_1bcf&pid_2b98&mi_00#6&2e7edb1b&0&0000#{e5323777-f976-4f5b-9b55-b94699c46e44}\\global",
+  "cameraType" : "UsbCamera",
+  "currentPipelineIndex" : -1,
+  "calibrations" : [ ],
+  "streamIndex" : 1
+}
