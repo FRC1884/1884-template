@@ -30,7 +30,6 @@ public class ExampleTankDrive extends SubsystemBase {
   private static final int kMMacceleration = (1000); // sensorUnitsPer100msPerSec
   private static final int kMMvelocity = (1000); // sensorUnitsPer100ms
 
-  // CONSTANTS
   public ExampleTankDrive() {
     leftFront = TalonSRXFactory.createDefaultTalon(RobotMap.TankDriveMap.leftFrontMaster);
     leftBack = TalonSRXFactory.createDefaultTalon(RobotMap.TankDriveMap.leftBackMaster);
