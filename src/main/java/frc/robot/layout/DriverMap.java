@@ -1,7 +1,12 @@
 package frc.robot.layout;
 
+import java.util.HashMap;
+
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.wpilibj.Filesystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.subsystems.SwerveDrive;
 import frc.robot.util.controllers.CommandMap;
@@ -23,9 +28,11 @@ public abstract class DriverMap extends CommandMap {
 
     swerve.setDefaultCommand(swerve.driveCommand(this::getChassisSpeeds));
 
-    System.out.println(
-        Filesystem.getDeployDirectory().listFiles()[0].listFiles()[0].getName()
-            + "YOUR MOM IS MINE");
-    getPathPlanningTestButton().whenActive(swerve.followTrajectoryCommand("Old Way", true));
+    var commands = new HashMap<String, Command>();
+    commands.put("marker", new InstantCommand(() -> {
+      System.out.println("Hello Lamine");
+    }));
+
+    getPathPlanningTestButton().whenActive(swerve.followTrajectoryCommand("Old Way", commands, true));
   }
 }
