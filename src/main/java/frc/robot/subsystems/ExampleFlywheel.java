@@ -23,8 +23,7 @@ public class ExampleFlywheel extends SubsystemBase {
   private SparkMaxPIDController leader_pidController, follower_pidController;
 
   private ExampleFlywheel() {
-    leaderFlywheel = 
-        new CANSparkMax(RobotMap.FlywheelMap.LEADER_FLYWHEEL, MotorType.kBrushless);
+    leaderFlywheel = new CANSparkMax(RobotMap.FlywheelMap.LEADER_FLYWHEEL, MotorType.kBrushless);
     followerFlywheel =
         new CANSparkMax(RobotMap.FlywheelMap.FOLLOWER_FLYWHEEL, MotorType.kBrushless);
 

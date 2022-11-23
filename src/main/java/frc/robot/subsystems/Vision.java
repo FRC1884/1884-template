@@ -1,26 +1,23 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import org.photonvision.PhotonCamera;
-import org.photonvision.targeting.PhotonPipelineResult;
-import org.photonvision.targeting.PhotonTrackedTarget;
-
 import frc.robot.RobotMap;
+import org.photonvision.PhotonCamera;
+import org.photonvision.targeting.PhotonTrackedTarget;
 
 public class Vision extends SubsystemBase {
 
   private static Vision instance;
 
   public static Vision getInstance() {
-    if (instance == null)
-      instance = new Vision();
+    if (instance == null) instance = new Vision();
     return instance;
   }
 
   // Camera
   private PhotonCamera vision;
 
-  //Devil's in the details
+  // Devil's in the details
   private PhotonTrackedTarget latestTarget;
 
   public Vision() {
@@ -29,7 +26,7 @@ public class Vision extends SubsystemBase {
 
   private void updateResult() {
     if (vision.getLatestResult().hasTargets())
-    latestTarget = vision.getLatestResult().getBestTarget();
+      latestTarget = vision.getLatestResult().getBestTarget();
   }
 
   public double getAngle() {
