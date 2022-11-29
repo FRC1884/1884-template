@@ -1,7 +1,5 @@
 package frc.robot;
 
-import javax.swing.text.Style;
-
 public class RobotMap {
   public static class ElevatorMap {
     public static final int master = 4;
@@ -73,14 +71,14 @@ public class RobotMap {
   }
 
   public static class FlywheelMap {
-      public static final int LEADER_FLYWHEEL = -1; // FIXME Set flywheel motor ID
-      public static final int FOLLOWER_FLYWHEEL = -1; // FIXME Set flywheel motor ID
+    public static final int LEADER_FLYWHEEL = -1; // FIXME Set flywheel motor ID
+    public static final int FOLLOWER_FLYWHEEL = -1; // FIXME Set flywheel motor ID
   }
 
   public static class CameraMap {
-      // Rename the cameras in phtonvision dashboard to the corresponding camera name
-      public static final String COMPUTER_VISION = "camscanner";
-      public static final String DRIVER_CAMERA = "drivercam";
+    // Rename the cameras in phtonvision dashboard to the corresponding camera name
+    public static final String COMPUTER_VISION = "camscanner";
+    public static final String DRIVER_CAMERA = "drivercam";
   }
 
   public static class ControllerMap {
