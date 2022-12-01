@@ -1,8 +1,5 @@
 package frc.robot.subsystems;
 
-import java.util.HashMap;
-import java.util.function.Supplier;
-
 import com.ctre.phoenix.sensors.WPI_Pigeon2;
 // import com.omagarwal25.swervelib.Mk4SwerveModuleHelper;
 import com.pathplanner.lib.PathPlanner;
@@ -13,7 +10,6 @@ import com.swervedrivespecialties.swervelib.Mk4SwerveModuleHelper;
 // import com.omagarwal25.swervelib.SdsModuleConfigurations;
 // import com.omagarwal25.swervelib.SwerveModule;
 import com.swervedrivespecialties.swervelib.SwerveModule;
-
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
@@ -33,23 +29,22 @@ import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotMap.DriveMap;
 import frc.robot.RobotMap.DriveMap.Version;
+import java.util.HashMap;
+import java.util.function.Supplier;
 
 public class SwerveDrive extends SubsystemBase {
 
   private static SwerveDrive instance;
 
   public static SwerveDrive getInstance() {
-    if (instance == null)
-      instance = new SwerveDrive();
+    if (instance == null) instance = new SwerveDrive();
     return instance;
   }
 
   /**
    * The maximum voltage that will be delivered to the drive motors.
    *
-   * <p>
-   * This can be reduced to cap the robot's maximum speed. Typically, this is
-   * useful during
+   * <p>This can be reduced to cap the robot's maximum speed. Typically, this is useful during
    * initial testing of the robot.
    */
   public static final double MAX_VOLTAGE = 12.0;
@@ -65,37 +60,36 @@ public class SwerveDrive extends SubsystemBase {
   /**
    * The maximum velocity of the robot in meters per second.
    *
-   * <p>
-   * This is a measure of how fast the robot should be able to drive in a straight
-   * line.
+   * <p>This is a measure of how fast the robot should be able to drive in a straight line.
    */
-  public static final double MAX_VELOCITY_METERS_PER_SECOND = DriveMap.DRIVE_MOTOR_FREE_SPEED
-      / 60.0
-      * DriveMap.getModuleConfiguration().getDriveReduction()
-      * DriveMap.getModuleConfiguration().getWheelDiameter()
-      * Math.PI;
+  public static final double MAX_VELOCITY_METERS_PER_SECOND =
+      DriveMap.DRIVE_MOTOR_FREE_SPEED
+          / 60.0
+          * DriveMap.getModuleConfiguration().getDriveReduction()
+          * DriveMap.getModuleConfiguration().getWheelDiameter()
+          * Math.PI;
 
   /**
    * The maximum angular velocity of the robot in radians per second.
    *
-   * <p>
-   * This is a measure of how fast the robot can rotate in place.
+   * <p>This is a measure of how fast the robot can rotate in place.
    */
   // Here we calculate the theoretical maximum angular velocity. You can also
   // replace this with a measured amount.
-  public static final double MAX_ANGULAR_VELOCITY_RADIANS_PER_SECOND = MAX_VELOCITY_METERS_PER_SECOND
-      / Math.hypot(DriveMap.TRACKWIDTH_METERS / 2.0, DriveMap.WHEELBASE_METERS / 2.0);
+  public static final double MAX_ANGULAR_VELOCITY_RADIANS_PER_SECOND =
+      MAX_VELOCITY_METERS_PER_SECOND
+          / Math.hypot(DriveMap.TRACKWIDTH_METERS / 2.0, DriveMap.WHEELBASE_METERS / 2.0);
 
-  private final SwerveDriveKinematics kinematics = new SwerveDriveKinematics(
-      // Front left
-      new Translation2d(DriveMap.TRACKWIDTH_METERS / 2.0, DriveMap.WHEELBASE_METERS / 2.0),
-      // Front right
-      new Translation2d(DriveMap.TRACKWIDTH_METERS / 2.0, -DriveMap.WHEELBASE_METERS / 2.0),
-      // Back left
-      new Translation2d(-DriveMap.TRACKWIDTH_METERS / 2.0, DriveMap.WHEELBASE_METERS / 2.0),
-      // Back right
-      new Translation2d(
-          -DriveMap.TRACKWIDTH_METERS / 2.0, -DriveMap.WHEELBASE_METERS / 2.0));
+  private final SwerveDriveKinematics kinematics =
+      new SwerveDriveKinematics(
+          // Front left
+          new Translation2d(DriveMap.TRACKWIDTH_METERS / 2.0, DriveMap.WHEELBASE_METERS / 2.0),
+          // Front right
+          new Translation2d(DriveMap.TRACKWIDTH_METERS / 2.0, -DriveMap.WHEELBASE_METERS / 2.0),
+          // Back left
+          new Translation2d(-DriveMap.TRACKWIDTH_METERS / 2.0, DriveMap.WHEELBASE_METERS / 2.0),
+          // Back right
+          new Translation2d(-DriveMap.TRACKWIDTH_METERS / 2.0, -DriveMap.WHEELBASE_METERS / 2.0));
 
   // The important thing about how you configure your gyroscope is that rotating
   // the robot counter-clockwise should
@@ -113,8 +107,8 @@ public class SwerveDrive extends SubsystemBase {
   private ChassisSpeeds chassisSpeeds = new ChassisSpeeds(0.0, 0.0, 0.0);
   private SwerveDriveOdometry swerveDriveOdometry;
 
-  private SwerveModule createModule(DriveMap.Module module, ShuffleboardTab tab, int shuffleboardColumn,
-      String name) {
+  private SwerveModule createModule(
+      DriveMap.Module module, ShuffleboardTab tab, int shuffleboardColumn, String name) {
     var drive = module.getDriveId();
     var steer = module.getSteerId();
     var encoder = module.getEncoderId();
@@ -124,16 +118,11 @@ public class SwerveDrive extends SubsystemBase {
 
     if (DriveMap.VERSION == Version.MK3) {
       return Mk3SwerveModuleHelper.createFalcon500(
-          layout,
-          DriveMap.MK3_GEAR_RATIO,
-          drive,
-          steer,
-          encoder, offset);
+          layout, DriveMap.MK3_GEAR_RATIO, drive, steer, encoder, offset);
     } else {
       return Mk4SwerveModuleHelper.createFalcon500(
           layout, DriveMap.MK4_GEAR_RATIO, drive, steer, encoder, offset);
     }
-
   }
 
   private SwerveDrive() {
@@ -152,8 +141,7 @@ public class SwerveDrive extends SubsystemBase {
   }
 
   /**
-   * Sets the gyroscope angle to zero. This can be used to set the direction the
-   * robot is currently
+   * Sets the gyroscope angle to zero. This can be used to set the direction the robot is currently
    * facing to the 'forwards' direction.
    */
   public void zeroGyroscope() {
