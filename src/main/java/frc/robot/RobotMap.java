@@ -79,6 +79,9 @@ public class RobotMap {
     // Rename the cameras in phtonvision dashboard to the corresponding camera name
     public static final String COMPUTER_VISION = "camscanner";
     public static final String DRIVER_CAMERA = "drivercam";
+    public static final double CAMERA_HEIGHT_METRES = 0.5;
+    public static final double TARGET_HEIGHT_METRES = 3.0;
+    public static final double CAMERA_PITCH_RADIANS = 0.0;
   }
 
   public static class ControllerMap {
