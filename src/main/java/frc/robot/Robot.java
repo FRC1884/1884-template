@@ -1,11 +1,5 @@
 package frc.robot;
 
-import static frc.robot.RobotMap.DriveMap.BACK_LEFT_MODULE_STEER_MOTOR;
-import static frc.robot.RobotMap.DriveMap.BACK_RIGHT_MODULE_STEER_MOTOR;
-import static frc.robot.RobotMap.DriveMap.FRONT_LEFT_MODULE_STEER_MOTOR;
-import static frc.robot.RobotMap.DriveMap.FRONT_RIGHT_MODULE_STEER_MOTOR;
-
-import com.ctre.phoenix.motorcontrol.can.TalonFX;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 
@@ -29,17 +23,7 @@ public class Robot extends TimedRobot {
     // ExampleElevator.getInstance();
 
     OI.getInstance();
-    // SwerveDrive.getInstance().zeroGyroscope();
-
-    var brr = new TalonFX(BACK_RIGHT_MODULE_STEER_MOTOR);
-    var blr = new TalonFX(BACK_LEFT_MODULE_STEER_MOTOR);
-    var frr = new TalonFX(FRONT_RIGHT_MODULE_STEER_MOTOR);
-    var flr = new TalonFX(FRONT_LEFT_MODULE_STEER_MOTOR);
-
-    brr.setSelectedSensorPosition(0, 0, 20);
-    blr.setSelectedSensorPosition(0, 0, 20);
-    frr.setSelectedSensorPosition(0, 0, 20);
-    flr.setSelectedSensorPosition(0, 0, 20);
+    // SwerveDrive.getInstance().zeroGyroscope()
   }
 
   /**
