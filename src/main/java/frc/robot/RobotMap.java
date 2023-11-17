@@ -72,6 +72,7 @@ public class RobotMap {
         Mk4SwerveModuleHelper.GearRatio.L1;
 
     public static final double TRACKWIDTH_METERS = 0.617; // FIXME Measure and set trackwidth
+
     /**
      * The front-to-back distance between the drivetrain wheels.
      *
