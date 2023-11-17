@@ -5,6 +5,7 @@ import com.ctre.phoenix.motorcontrol.DemandType;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.Subsystem;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotMap;
@@ -24,7 +25,7 @@ public class ExampleElevator extends SubsystemBase {
   }
 
   private static final double arbFF = 0.1238; // 0.1
-  private final TalonSRX motor;
+  private TalonSRX motor;
 
   // Gains
   private static final double kP = 0.1;
@@ -95,27 +96,7 @@ public class ExampleElevator extends SubsystemBase {
   }
 
   public Command moveElevatorCommand(Setpoint pos) {
-    return new Command() {
-      @Override
-      public void initialize() {
-        Command.super.initialize();
-        setPosition(pos);
-      }
-
-      @Override
-      public boolean isFinished() {
-        return isAtSetpoint();
-      }
-
-      @Override
-      public Set<Subsystem> getRequirements() {
-        var reqs = new HashSet<Subsystem>();
-
-        reqs.add(ExampleElevator.getInstance());
-
-        return reqs;
-      }
-    };
+    return new InstantCommand(() -> setPosition(pos), this);
   }
 
   public double getError() {
