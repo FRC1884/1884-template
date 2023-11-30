@@ -2,10 +2,8 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.sensors.WPI_Pigeon2;
 // import com.omagarwal25.swervelib.Mk4SwerveModuleHelper;
-import com.pathplanner.lib.path.PathPlannerTrajectory;
-import com.pathplanner.lib.pathfinding.Pathfinding;
-import com.pathplanner.lib.path.PathPlannerPath;
 import com.pathplanner.lib.commands.FollowPathHolonomic;
+import com.pathplanner.lib.path.PathPlannerPath;
 import com.swervedrivespecialties.swervelib.Mk3SwerveModuleHelper;
 import com.swervedrivespecialties.swervelib.Mk4SwerveModuleHelper;
 import com.swervedrivespecialties.swervelib.SwerveModule;
