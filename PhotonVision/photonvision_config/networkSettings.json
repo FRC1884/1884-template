@@ -1,8 +1,0 @@
-{
-  "teamNumber" : 1884,
-  "connectionType" : "DHCP",
-  "staticIp" : "",
-  "hostname" : "photonvision",
-  "runNTServer" : false,
-  "shouldManage" : false
-}

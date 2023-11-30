@@ -5,7 +5,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotMap;
-import frc.robot.util.drivers.TalonSRXFactory;
+import frc.robot.core.util.drivers.TalonSRXFactory;
 
 public class ExampleTankDrive extends SubsystemBase {
   private static ExampleTankDrive instance;

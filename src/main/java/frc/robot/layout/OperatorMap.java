@@ -1,7 +1,7 @@
 package frc.robot.layout;
 
-import frc.robot.util.controllers.CommandMap;
-import frc.robot.util.controllers.GameController;
+import frc.robot.core.util.controllers.CommandMap;
+import frc.robot.core.util.controllers.GameController;
 
 public abstract class OperatorMap extends CommandMap {
 

@@ -2,9 +2,10 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.sensors.WPI_Pigeon2;
 // import com.omagarwal25.swervelib.Mk4SwerveModuleHelper;
-import com.pathplanner.lib.PathPlanner;
-import com.pathplanner.lib.PathPlannerTrajectory;
-import com.pathplanner.lib.commands.PPSwerveControllerCommand;
+import com.pathplanner.lib.path.PathPlannerTrajectory;
+import com.pathplanner.lib.pathfinding.Pathfinding;
+import com.pathplanner.lib.path.PathPlannerPath;
+import com.pathplanner.lib.commands.FollowPathHolonomic;
 import com.swervedrivespecialties.swervelib.Mk3SwerveModuleHelper;
 import com.swervedrivespecialties.swervelib.Mk4SwerveModuleHelper;
 import com.swervedrivespecialties.swervelib.SwerveModule;
@@ -168,18 +169,12 @@ public class SwerveDrive extends SubsystemBase {
   }
 
   public SequentialCommandGroup followTrajectoryCommand(
-      String path, HashMap<String, Command> eventMap, boolean isFirstPath) {
-    PathPlannerTrajectory traj = PathPlanner.loadPath(path, 1, 1);
+      String pathName, HashMap<String, Command> eventMap, boolean isFirstPath) {
+    PathPlannerPath path = PathPlannerPath.fromPathFile(pathName);
 
     // Create PIDControllers for each movement (and set default values)
-    PIDController xPID = new PIDController(0.1, 0.0, 0.0);
-    PIDController yPID = new PIDController(0.1, 0.0, 0.0);
-    PIDController thetaPID = new PIDController(0.1, 0.0, 0.0);
-
-    // Create PID tuning widgets in Glass (not for use in competition)
-    SmartDashboard.putData("x-input PID Controller", xPID);
-    SmartDashboard.putData("y-input PID Controller", yPID);
-    SmartDashboard.putData("rot PID Controller", thetaPID);
+    PIDController translationPID = new PIDController(0.1, 0.0, 0.0);
+    PIDController rotationPID = new PIDController(0.1, 0.0, 0.0);
 
     return new SequentialCommandGroup(
         new InstantCommand(
@@ -187,11 +182,11 @@ public class SwerveDrive extends SubsystemBase {
               // Reset odometry for the first path you run during auto
               if (isFirstPath) {
                 swerveDriveOdometry.resetPosition(
-                    traj.getInitialHolonomicPose(), getGyroscopeRotation());
+                    path.getPreviewStartingHolonomicPose(), getGyroscopeRotation());
               }
             }),
-        new PPSwerveControllerCommand(
-            traj,
+        new FollowPathHolonomic(
+            path,
             this::getPose,
             kinematics,
             xPID,

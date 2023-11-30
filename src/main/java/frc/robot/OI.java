@@ -1,9 +1,9 @@
 package frc.robot;
 
+import frc.robot.core.util.controllers.GameController;
+import frc.robot.core.util.controllers.Logitech;
+import frc.robot.core.util.controllers.Logitech.Version;
 import frc.robot.layout.TwoJoyStickDriverMap;
-import frc.robot.util.controllers.GameController;
-import frc.robot.util.controllers.Logitech;
-import frc.robot.util.controllers.Logitech.Version;
 
 public class OI {
   private static OI instance;
