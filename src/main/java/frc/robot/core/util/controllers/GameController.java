@@ -1,8 +1,8 @@
 package frc.robot.core.util.controllers;
 
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj2.command.button.Button;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.core.util.MathUtils;
 
 public class GameController extends Joystick {
@@ -37,18 +37,4 @@ public class GameController extends Joystick {
     return this.getPOV();
   }
 
-  public class DpadTriggerButton extends Button {
-    private int buttonAngle;
-    private GameController controller;
-
-    public DpadTriggerButton(GameController controller, int dpadButtonAngle) {
-      this.buttonAngle = dpadButtonAngle;
-      this.controller = controller;
-    }
-
-    @Override
-    public boolean get() {
-      return this.controller.getDpadAngle() == this.buttonAngle;
-    }
-  }
 }

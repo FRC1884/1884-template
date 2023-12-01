@@ -25,10 +25,5 @@
       }
     },
   ],
-  "java.test.defaultConfig": "WPIlibUnitTests",
-  "workbench.colorCustomizations": {
-    "activityBar.background": "#221B80",
-    "titleBar.activeBackground": "#3026B3",
-    "titleBar.activeForeground": "#FCFCFE"
-  }
+  "java.test.defaultConfig": "WPIlibUnitTests"
 }

@@ -1,13 +1,8 @@
 package frc.robot.layout;
 
-import edu.wpi.first.math.kinematics.ChassisSpeeds;
-import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.core.util.controllers.CommandMap;
 import frc.robot.core.util.controllers.GameController;
-import frc.robot.subsystems.SwerveDrive;
-import java.util.HashMap;
 
 public abstract class DriverMap extends CommandMap {
 
@@ -15,25 +10,9 @@ public abstract class DriverMap extends CommandMap {
     super(controller);
   }
 
-  abstract ChassisSpeeds getChassisSpeeds();
-
-  abstract JoystickButton getPathPlanningTestButton();
+  abstract JoystickButton getTestButton();
 
   @Override
   public void registerCommands() {
-    var swerve = SwerveDrive.getInstance();
-
-    swerve.setDefaultCommand(swerve.driveCommand(this::getChassisSpeeds));
-
-    var commands = new HashMap<String, Command>();
-    commands.put(
-        "marker",
-        new InstantCommand(
-            () -> {
-              System.out.println("Hello Lamine");
-            }));
-
-    getPathPlanningTestButton()
-        .whenActive(swerve.followTrajectoryCommand("Old Way", commands, true));
   }
 }
