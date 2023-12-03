@@ -9,8 +9,9 @@ public abstract class OperatorMap extends CommandMap {
   public OperatorMap(GameController controller) {
     super(controller);
   }
+
   abstract JoystickButton getTestButton();
-  
+
   @Override
-  public void registerCommands(){}
+  public void registerCommands() {}
 }

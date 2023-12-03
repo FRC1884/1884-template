@@ -13,6 +13,5 @@ public abstract class DriverMap extends CommandMap {
   abstract JoystickButton getTestButton();
 
   @Override
-  public void registerCommands() {
-  }
+  public void registerCommands() {}
 }
