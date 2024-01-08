@@ -1,4 +1,4 @@
-package frc.robot.core.Swerve;
+package frc.robot.core.swerve;
 
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import edu.wpi.first.math.geometry.Translation2d;
@@ -77,6 +77,19 @@ public class SwerveConstants {
   public static final double DRIVE_KS = (0.32 / 12);
   public static final double DRIVE_KV = (1.51 / 12);
   public static final double DRIVE_KA = (0.27 / 12);
+
+  /* Pathing PID values */
+  public static final double X_KP = 0.0;
+  public static final double X_KI = 0.0;
+  public static final double X_KD = 0.0;
+
+  public static final double Y_KP = 0.0;
+  public static final double Y_KI = 0.0;
+  public static final double Y_KD = 0.0;
+
+  public static final double THETA_KP = 0.0;
+  public static final double THETA_KI = 0.0;
+  public static final double THETA_KD = 0.0;
 
   /* Swerve Profiling Values */
   /** Meters per Second */
