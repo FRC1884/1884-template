@@ -1,9 +1,7 @@
 package frc.robot;
 
-import com.swervedrivespecialties.swervelib.Mk3SwerveModuleHelper;
-import com.swervedrivespecialties.swervelib.Mk4SwerveModuleHelper;
-import com.swervedrivespecialties.swervelib.ModuleConfiguration;
-import com.swervedrivespecialties.swervelib.SdsModuleConfigurations;
+import edu.wpi.first.math.geometry.Rotation2d;
+import frc.robot.core.swerve.SwerveModuleConstants;
 
 public class RobotMap {
   public static class ElevatorMap {
@@ -14,81 +12,48 @@ public class RobotMap {
   }
 
   public static class DriveMap {
-
-    public static final double DRIVE_MOTOR_FREE_SPEED = 6380;
-
-    public static class Module {
-      public Module(int driveId, int steerId, int encoderId, double steerOffsetDegrees) {
-        this.driveId = driveId;
-        this.steerId = steerId;
-        this.encoderId = encoderId;
-        this.steerOffsetDegrees = steerOffsetDegrees;
-      }
-
-      private int driveId;
-
-      public int getDriveId() {
-        return driveId;
-      }
-
-      private int steerId;
-
-      public int getSteerId() {
-        return steerId;
-      }
-
-      private int encoderId;
-
-      public int getEncoderId() {
-        return encoderId;
-      }
-
-      private double steerOffsetDegrees;
-
-      public double getSteerOffset() {
-        return -Math.toRadians(steerOffsetDegrees);
-      }
-    }
-
-    public enum Version {
-      MK3,
-      MK4
-    }
-
-    public static final Version VERSION = Version.MK4;
-
-    public static final ModuleConfiguration MK3_MODULE_CONFIGURATION =
-        SdsModuleConfigurations.MK3_STANDARD;
-    public static final ModuleConfiguration MK4_MODULE_CONFIGURATION =
-        SdsModuleConfigurations.MK4_L1;
-
-    public static ModuleConfiguration getModuleConfiguration() {
-      return VERSION == Version.MK3 ? MK3_MODULE_CONFIGURATION : MK4_MODULE_CONFIGURATION;
-    }
-
-    public static final Mk3SwerveModuleHelper.GearRatio MK3_GEAR_RATIO =
-        Mk3SwerveModuleHelper.GearRatio.STANDARD;
-    public static final Mk4SwerveModuleHelper.GearRatio MK4_GEAR_RATIO =
-        Mk4SwerveModuleHelper.GearRatio.L1;
-
-    public static final double TRACKWIDTH_METERS = 0.617; // FIXME Measure and set trackwidth
-
-    /**
-     * The front-to-back distance between the drivetrain wheels.
-     *
-     * <p>Should be measured from center to center.
-     */
-    public static final double WHEELBASE_METERS = 0.617; // FIXME Measure and set wheelbase
-
     public static final int PIGEON_ID = 9;
 
-    public static final Module FRONT_LEFT_MODULE = new Module(7, 8, 18, 270);
+    /* Module Specific Constants */
+    /* Front Left Module - Module 0 */
+    public static final class FrontLeft {
+      public static final int DRIVE_ID = 7;
+      public static final int ROTATOR_ID = 8;
+      public static final int ENCODER_ID = 23;
+      public static final Rotation2d OFFSET = Rotation2d.fromDegrees(28);
+      public static final SwerveModuleConstants CONSTANTS =
+          new SwerveModuleConstants(DRIVE_ID, ROTATOR_ID, ENCODER_ID, OFFSET);
+    }
 
-    public static final Module FRONT_RIGHT_MODULE = new Module(1, 2, 17, 260);
+    /* Front Right Module - Module 1 */
+    public static final class FrontRight {
+      public static final int DRIVE_ID = 3;
+      public static final int ROTATOR_ID = 4;
+      public static final int ENCODER_ID = 12;
+      public static final Rotation2d OFFSET = Rotation2d.fromDegrees(230);
+      public static final SwerveModuleConstants CONSTANTS =
+          new SwerveModuleConstants(DRIVE_ID, ROTATOR_ID, ENCODER_ID, OFFSET);
+    }
 
-    public static final Module BACK_LEF_MODULE = new Module(5, 6, 16, 270);
+    /* Back Left Module - Module 2 */
+    public static final class BackLeft {
+      public static final int DRIVE_ID = 36;
+      public static final int ROTATOR_ID = 37;
+      public static final int ENCODER_ID = 13;
+      public static final Rotation2d OFFSET = Rotation2d.fromDegrees(100);
+      public static final SwerveModuleConstants CONSTANTS =
+          new SwerveModuleConstants(DRIVE_ID, ROTATOR_ID, ENCODER_ID, OFFSET);
+    }
 
-    public static final Module BACK_RIGHT_MODULE = new Module(3, 4, 19, 265);
+    /* Back Right Module - Module 3 */
+    public static final class BackRight {
+      public static final int DRIVE_ID = 5;
+      public static final int ROTATOR_ID = 6;
+      public static final int ENCODER_ID = 11;
+      public static final Rotation2d OFFSET = Rotation2d.fromDegrees(342);
+      public static final SwerveModuleConstants CONSTANTS =
+          new SwerveModuleConstants(DRIVE_ID, ROTATOR_ID, ENCODER_ID, OFFSET);
+    }
   }
 
   public static class TankDriveMap {

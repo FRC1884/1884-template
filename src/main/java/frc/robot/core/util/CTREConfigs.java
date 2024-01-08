@@ -6,7 +6,7 @@ import com.ctre.phoenix.sensors.AbsoluteSensorRange;
 import com.ctre.phoenix.sensors.CANCoderConfiguration;
 import com.ctre.phoenix.sensors.SensorInitializationStrategy;
 import com.ctre.phoenix.sensors.SensorTimeBase;
-import frc.robot.core.Swerve.SwerveConstants;
+import frc.robot.core.swerve.SwerveConstants;
 
 public final class CTREConfigs {
   public TalonFXConfiguration swerveAngleFXConfig;
@@ -55,4 +55,7 @@ public final class CTREConfigs {
         SensorInitializationStrategy.BootToAbsolutePosition;
     swerveCanCoderConfig.sensorTimeBase = SensorTimeBase.PerSecond;
   }
+
+  
 }
+

@@ -5,7 +5,8 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.core.util.MathUtils;
 
 public class GameController extends Joystick {
-  private final double DEADZONE = 0.1;
+  public static final double DEADZONE = 0.1;
+  private static final MathUtils.TransformPresets function = MathUtils.TransformPresets.TRANSFORM;
 
   private ButtonMap map;
 
@@ -25,7 +26,7 @@ public class GameController extends Joystick {
   public double getAxis(ButtonMap.Axis axis) {
     double value = this.getRawAxis(map.axisMap().get(axis));
 
-    return MathUtils.signSquare(MathUtils.deadband(value, DEADZONE));
+    return function.on(value, DEADZONE);
   }
 
   public double getTrigger(ButtonMap.Trigger trigger) {

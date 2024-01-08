@@ -1,4 +1,4 @@
-package frc.robot.core.Swerve;
+package frc.robot.core.swerve;
 
 import com.ctre.phoenix.sensors.WPI_Pigeon2;
 import edu.wpi.first.math.geometry.Pose2d;
@@ -9,6 +9,7 @@ import edu.wpi.first.math.kinematics.SwerveDriveOdometry;
 import edu.wpi.first.math.kinematics.SwerveModulePosition;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
 import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.RepeatCommand;
 import edu.wpi.first.wpilibj2.command.RunCommand;
@@ -16,21 +17,17 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import java.util.function.Supplier;
 
 public abstract class Swerve extends SubsystemBase {
-  private static Swerve instance;
-
-  public abstract Swerve getInstance();
-
   private SwerveDriveOdometry odometry;
   private SwerveModule[] modules;
   private WPI_Pigeon2 gyro;
 
-  private Swerve(
-      int pigeon,
+  public Swerve(
+      int pigeon_id,
       SwerveModuleConstants fl,
       SwerveModuleConstants fr,
       SwerveModuleConstants bl,
       SwerveModuleConstants br) {
-    gyro = new WPI_Pigeon2(pigeon);
+    gyro = new WPI_Pigeon2(pigeon_id);
     gyro.configFactoryDefault();
     zeroGyro();
 
@@ -43,6 +40,18 @@ public abstract class Swerve extends SubsystemBase {
         };
 
     odometry = new SwerveDriveOdometry(SwerveConstants.KINEMATICS, getYaw(), getModulePositions());
+    
+    var swerveTab = Shuffleboard.getTab("Swerve");
+
+    swerveTab.addDouble("module 0 position", () -> getModulePositions()[0].distanceMeters);
+    swerveTab.addDouble("module 1 position", () -> getModulePositions()[1].distanceMeters);
+    swerveTab.addDouble("module 2 position", () -> getModulePositions()[2].distanceMeters);
+    swerveTab.addDouble("module 3 position", () -> getModulePositions()[3].distanceMeters);
+    for (SwerveModule mod : modules) {
+      swerveTab.addDouble("Mod " + mod.moduleNumber + " Cancoder", () -> mod.getCanCoder().getDegrees());
+      swerveTab.addDouble("Mod " + mod.moduleNumber + " Integrated", () -> mod.getPosition().angle.getDegrees());
+      swerveTab.addDouble("Mod " + mod.moduleNumber + " Velocity", () -> mod.getState().speedMetersPerSecond);
+    }
   }
 
   public void resetModulesToAbsolute() {
