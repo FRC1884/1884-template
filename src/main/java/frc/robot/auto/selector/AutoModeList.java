@@ -15,6 +15,6 @@ public enum AutoModeList {
   }
 
   public SequentialCommandGroup getAuto() {
-      return autoCommand;
-    }
+    return autoCommand;
+  }
 }

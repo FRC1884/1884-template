@@ -55,7 +55,4 @@ public final class CTREConfigs {
         SensorInitializationStrategy.BootToAbsolutePosition;
     swerveCanCoderConfig.sensorTimeBase = SensorTimeBase.PerSecond;
   }
-
-  
 }
-

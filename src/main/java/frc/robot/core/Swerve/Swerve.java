@@ -40,7 +40,7 @@ public abstract class Swerve extends SubsystemBase {
         };
 
     odometry = new SwerveDriveOdometry(SwerveConstants.KINEMATICS, getYaw(), getModulePositions());
-    
+
     var swerveTab = Shuffleboard.getTab("Swerve");
 
     swerveTab.addDouble("module 0 position", () -> getModulePositions()[0].distanceMeters);
@@ -48,9 +48,12 @@ public abstract class Swerve extends SubsystemBase {
     swerveTab.addDouble("module 2 position", () -> getModulePositions()[2].distanceMeters);
     swerveTab.addDouble("module 3 position", () -> getModulePositions()[3].distanceMeters);
     for (SwerveModule mod : modules) {
-      swerveTab.addDouble("Mod " + mod.moduleNumber + " Cancoder", () -> mod.getCanCoder().getDegrees());
-      swerveTab.addDouble("Mod " + mod.moduleNumber + " Integrated", () -> mod.getPosition().angle.getDegrees());
-      swerveTab.addDouble("Mod " + mod.moduleNumber + " Velocity", () -> mod.getState().speedMetersPerSecond);
+      swerveTab.addDouble(
+          "Mod " + mod.moduleNumber + " Cancoder", () -> mod.getCanCoder().getDegrees());
+      swerveTab.addDouble(
+          "Mod " + mod.moduleNumber + " Integrated", () -> mod.getPosition().angle.getDegrees());
+      swerveTab.addDouble(
+          "Mod " + mod.moduleNumber + " Velocity", () -> mod.getState().speedMetersPerSecond);
     }
   }
 

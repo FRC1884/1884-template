@@ -1,15 +1,7 @@
 package frc.robot.subsystems;
 
-import static com.pathplanner.lib.path.PathPlannerPath.fromPathFile;
 import static frc.robot.core.swerve.SwerveConstants.*;
 
-import com.pathplanner.lib.commands.FollowPathCommand;
-import com.pathplanner.lib.commands.FollowPathWithEvents;
-import com.pathplanner.lib.controllers.PPHolonomicDriveController;
-import com.pathplanner.lib.controllers.PathFollowingController;
-import com.pathplanner.lib.path.PathPlannerPath;
-import com.pathplanner.lib.util.PIDConstants;
-import com.pathplanner.lib.util.ReplanningConfig;
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
@@ -17,8 +9,6 @@ import edu.wpi.first.wpilibj2.command.*;
 import frc.robot.RobotMap.DriveMap;
 import frc.robot.core.swerve.Swerve;
 import frc.robot.core.swerve.SwerveConstants;
-import java.util.function.Consumer;
-import java.util.function.Supplier;
 
 /**
  * <b>Use {@link #getInstance()} to access all subsystems.</b><br>
@@ -118,19 +108,19 @@ public class Drivetrain extends Swerve {
    *     the very first path you follow in Autonomous.
    * @return a Command that follows the path.
    */
-//  private Command followTrajectoryCommand(Supplier<PathPlannerPath> traj, boolean isFirstPath) {
-//    // Create PIDControllers for each movement (and set default values)
-//    PIDConstants translationConstants = new PIDConstants(5.0, 0.0, 0.0);
-//    PIDConstants rotationConstants = new PIDConstants(1.0, 0.0, 0.0);
-//
-//    PathFollowingController dc =
-//        new PPHolonomicDriveController(translationConstants, rotationConstants, 0.0, 0.0);
-//    Supplier<ChassisSpeeds> csS = KINEMATICS::toChassisSpeeds;
-//    Consumer<ChassisSpeeds> csC = ChassisSpeeds -> drive(ChassisSpeeds, true);
-//
-//    return new FollowPathCommand(
-//        traj.get(), this::getPose, csS, csC, dc, new ReplanningConfig(), this);
-//  }
+  //  private Command followTrajectoryCommand(Supplier<PathPlannerPath> traj, boolean isFirstPath) {
+  //    // Create PIDControllers for each movement (and set default values)
+  //    PIDConstants translationConstants = new PIDConstants(5.0, 0.0, 0.0);
+  //    PIDConstants rotationConstants = new PIDConstants(1.0, 0.0, 0.0);
+  //
+  //    PathFollowingController dc =
+  //        new PPHolonomicDriveController(translationConstants, rotationConstants, 0.0, 0.0);
+  //    Supplier<ChassisSpeeds> csS = KINEMATICS::toChassisSpeeds;
+  //    Consumer<ChassisSpeeds> csC = ChassisSpeeds -> drive(ChassisSpeeds, true);
+  //
+  //    return new FollowPathCommand(
+  //        traj.get(), this::getPose, csS, csC, dc, new ReplanningConfig(), this);
+  //  }
 
   /**
    * @see #followTrajectoryCommand(Supplier, boolean)
@@ -140,14 +130,14 @@ public class Drivetrain extends Swerve {
    *     the very first path you follow in Autonomous.
    * @return a Command that follows the path.
    */
-//  public Command followTrajectoryCommand(String pathFile, boolean isFirstPath) {
-//    PathPlannerPath path = fromPathFile(pathFile);
-//    try {return new FollowPathWithEvents(
-//        followTrajectoryCommand(() -> path, isFirstPath), path, this::getPose);
-//    }
-//    catch(Exception e) {e.printStackTrace(); return null;}
-//
-//  }
+  //  public Command followTrajectoryCommand(String pathFile, boolean isFirstPath) {
+  //    PathPlannerPath path = fromPathFile(pathFile);
+  //    try {return new FollowPathWithEvents(
+  //        followTrajectoryCommand(() -> path, isFirstPath), path, this::getPose);
+  //    }
+  //    catch(Exception e) {e.printStackTrace(); return null;}
+  //
+  //  }
 
   /**
    * This method is called once per cycle – or "period", hence its name. On the RoboRIO, this means
